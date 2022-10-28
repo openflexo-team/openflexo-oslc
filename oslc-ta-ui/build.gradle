@@ -1,0 +1,11 @@
+dependencies {
+  implementation project(":oslc-ta")
+
+  // openflexo dep
+  implementation flexoUi()
+  runtimeOnly fmlTechnologyAdapterUi()
+
+  // external dep
+  // testing dep
+  testImplementation flexoUiTest()
+}
