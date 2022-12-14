@@ -45,9 +45,9 @@ import org.eclipse.lyo.client.oslc.resources.Requirement;
 import org.eclipse.lyo.oslc4j.core.model.CreationFactory;
 import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
-import org.openflexo.pamela.ModelContextLibrary;
+import org.openflexo.pamela.PamelaMetaModelLibrary;
 import org.openflexo.pamela.exceptions.ModelDefinitionException;
-import org.openflexo.pamela.factory.ModelFactory;
+import org.openflexo.pamela.factory.PamelaModelFactory;
 import org.openflexo.technologyadapter.oslc.model.core.OSLCResource;
 import org.openflexo.technologyadapter.oslc.model.rm.OSLCRequirement;
 import org.openflexo.technologyadapter.oslc.model.rm.OSLCRequirementCollection;
@@ -56,7 +56,7 @@ public class OSLCRMModelConverter implements OSLCModelDedicatedConverter {
 
 	private final OSLCModelConverter mainConverter;
 
-	private ModelFactory factory;
+	private PamelaModelFactory factory;
 
 	/**
 	 * Constructor.
@@ -64,7 +64,7 @@ public class OSLCRMModelConverter implements OSLCModelDedicatedConverter {
 	public OSLCRMModelConverter(OSLCModelConverter mainConverter) {
 		this.mainConverter = mainConverter;
 		try {
-			factory = new ModelFactory(ModelContextLibrary.getCompoundModelContext(OSLCResource.class, OSLCRequirement.class,
+			factory = new PamelaModelFactory(PamelaMetaModelLibrary.getCompoundModelContext(OSLCResource.class, OSLCRequirement.class,
 					OSLCRequirementCollection.class));
 		} catch (ModelDefinitionException e) {
 			e.printStackTrace();
