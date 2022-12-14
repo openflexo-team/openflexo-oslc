@@ -71,7 +71,7 @@ public class OSLCCoreModelConverter implements OSLCModelDedicatedConverter {
 	public OSLCCoreModelConverter(OSLCModelConverter mainConverter) {
 		this.mainConverter = mainConverter;
 		try {
-			factory = new PamelaModelFactory(PamelaMetaModelLibrary.getCompoundModelContext(OSLCResource.class, OSLCServiceProviderCatalog.class,
+			factory = new PamelaModelFactory(PamelaMetaModelLibrary.retrieveMetaModel(OSLCResource.class, OSLCServiceProviderCatalog.class,
 					OSLCServiceProvider.class, OSLCQueryCapability.class, OSLCCreationFactory.class));
 		} catch (ModelDefinitionException e) {
 			e.printStackTrace();

@@ -64,7 +64,7 @@ public class OSLCRMModelConverter implements OSLCModelDedicatedConverter {
 	public OSLCRMModelConverter(OSLCModelConverter mainConverter) {
 		this.mainConverter = mainConverter;
 		try {
-			factory = new PamelaModelFactory(PamelaMetaModelLibrary.getCompoundModelContext(OSLCResource.class, OSLCRequirement.class,
+			factory = new PamelaModelFactory(PamelaMetaModelLibrary.retrieveMetaModel(OSLCResource.class, OSLCRequirement.class,
 					OSLCRequirementCollection.class));
 		} catch (ModelDefinitionException e) {
 			e.printStackTrace();
