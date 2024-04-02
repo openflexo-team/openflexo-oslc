@@ -15,9 +15,9 @@
 			rightClickAction="" name="OSLCBrowser" constraints="flow(index=0)">
 			<BrowserElement
 				dataClassName="org.openflexo.technologyadapter.oslc.model.core.OSLCServiceProviderCatalog"
-				label="OSLCServiceProviderCatalog.uri" icon="controller.iconForObject(OSLCServiceProviderCatalog)"
+				label="oslcServiceProviderCatalog.uri" icon="controller.iconForObject(oslcServiceProviderCatalog)"
 				isEditable="false" filtered="false" defaultVisible="true"
-				name="OSLCServiceProviderCatalog">
+				name="oslcServiceProviderCatalog">
 				<Children data="data.oSLCServiceProviders" name="OSLCServiceProviders" />
 			</BrowserElement>
 			<BrowserElement
