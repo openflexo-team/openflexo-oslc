@@ -52,6 +52,7 @@ import org.openflexo.pamela.annotations.ModelEntity;
 import org.openflexo.pamela.annotations.XMLElement;
 import org.openflexo.technologyadapter.oslc.model.core.OSLCResource;
 import org.openflexo.technologyadapter.oslc.model.core.OSLCServiceProviderCatalog;
+import org.openflexo.technologyadapter.oslc.rm.OSLCResourceResource;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.AddOSLCRequirement;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.AddOSLCRequirementCollection;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.SelectOSLCRequirement;
@@ -72,12 +73,13 @@ import org.openflexo.technologyadapter.oslc.virtualmodel.rm.OSLCRequirementRole;
 @DeclareEditionActions({ AddOSLCRequirement.class, AddOSLCRequirementCollection.class })
 @DeclareFetchRequests({ SelectOSLCRequirement.class, SelectOSLCRequirementCollection.class })
 @FML("OSLCRMModelSlot")
-public interface OSLCRMModelSlot extends FreeModelSlot<OSLCServiceProviderCatalog> {
+public interface OSLCRMModelSlot extends FreeModelSlot<OSLCServiceProviderCatalog, OSLCResourceResource> {
 
 	// @Override
 	// public OSLCTechnologyAdapter getTechnologyAdapter();
 
-	public static abstract class OSLCRMModelSlotImpl extends FreeModelSlotImpl<OSLCServiceProviderCatalog> implements OSLCRMModelSlot {
+	public static abstract class OSLCRMModelSlotImpl extends FreeModelSlotImpl<OSLCServiceProviderCatalog, OSLCResourceResource>
+			implements OSLCRMModelSlot {
 
 		@SuppressWarnings("unused")
 		private static final Logger logger = Logger.getLogger(OSLCRMModelSlot.class.getPackage().getName());

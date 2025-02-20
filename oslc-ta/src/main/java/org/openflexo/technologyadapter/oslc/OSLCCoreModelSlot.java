@@ -52,6 +52,7 @@ import org.openflexo.pamela.annotations.ModelEntity;
 import org.openflexo.pamela.annotations.XMLElement;
 import org.openflexo.technologyadapter.oslc.model.core.OSLCResource;
 import org.openflexo.technologyadapter.oslc.model.core.OSLCServiceProviderCatalog;
+import org.openflexo.technologyadapter.oslc.rm.OSLCResourceResource;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.AddOSLCResource;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.AddOSLCServiceProvider;
 import org.openflexo.technologyadapter.oslc.virtualmodel.action.SelectOSLCResource;
@@ -74,12 +75,13 @@ import org.openflexo.technologyadapter.oslc.virtualmodel.core.OSLCServiceRole;
 @DeclareEditionActions({ AddOSLCResource.class, AddOSLCServiceProvider.class })
 @DeclareFetchRequests({ SelectOSLCResource.class, SelectOSLCServiceProvider.class, SelectOSLCService.class })
 @FML("OSLCCoreModelSlot")
-public interface OSLCCoreModelSlot extends FreeModelSlot<OSLCServiceProviderCatalog> {
+public interface OSLCCoreModelSlot extends FreeModelSlot<OSLCServiceProviderCatalog, OSLCResourceResource> {
 
 	// @Override
 	// public OSLCTechnologyAdapter getTechnologyAdapter();
 
-	public static abstract class CDLModelSlotImpl extends FreeModelSlotImpl<OSLCServiceProviderCatalog> implements OSLCCoreModelSlot {
+	public static abstract class CDLModelSlotImpl extends FreeModelSlotImpl<OSLCServiceProviderCatalog, OSLCResourceResource>
+			implements OSLCCoreModelSlot {
 
 		private static final Logger logger = Logger.getLogger(OSLCCoreModelSlot.class.getPackage().getName());
 
