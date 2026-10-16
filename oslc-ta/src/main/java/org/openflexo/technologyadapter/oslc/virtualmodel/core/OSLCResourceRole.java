@@ -83,7 +83,7 @@ public interface OSLCResourceRole extends FlexoRole<OSLCResource> {
 
 		@Override
 		public ActorReference<OSLCResource> makeActorReference(OSLCResource object, FlexoConceptInstance fci) {
-			AbstractVirtualModelInstanceModelFactory<?> factory = fci.getFactory();
+			AbstractVirtualModelInstanceModelFactory factory = fci.getFactory();
 			ModelObjectActorReference<OSLCResource> returned = factory.newInstance(ModelObjectActorReference.class);
 			returned.setFlexoRole(this);
 			returned.setFlexoConceptInstance(fci);

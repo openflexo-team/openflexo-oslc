@@ -161,7 +161,8 @@ public class OSLCTechnologyAdapter extends TechnologyAdapter<OSLCTechnologyAdapt
 		OSLCRepository<I> returned = resourceCenter.retrieveRepository(OSLCRepository.class, this);
 		if (returned == null) {
 			returned = OSLCRepository.instanciateNewRepository(this, resourceCenter);
-			resourceCenter.registerRepository(returned, OSLCRepository.class, this);
+			// Another thread may have registered one meanwhile: use the registered one (CORE-D-25)
+			returned = resourceCenter.registerRepository(returned, OSLCRepository.class, this);
 		}
 		return returned;
 	}
