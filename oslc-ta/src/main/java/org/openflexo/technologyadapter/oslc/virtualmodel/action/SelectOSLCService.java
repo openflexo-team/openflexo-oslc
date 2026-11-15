@@ -38,6 +38,7 @@
 
 package org.openflexo.technologyadapter.oslc.virtualmodel.action;
 
+import org.openflexo.foundation.fml.rt.error.FMLExecutionException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,7 @@ public interface SelectOSLCService extends FetchRequest<OSLCCoreModelSlot, OSLCS
 		}
 
 		@Override
-		public List<OSLCService> performExecute(RunTimeEvaluationContext evaluationContext) {
+		public List<OSLCService> performExecute(RunTimeEvaluationContext evaluationContext) throws FMLExecutionException {
 
 			List<OSLCService> selectedOSLCServices = new ArrayList<>();
 

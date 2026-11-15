@@ -38,6 +38,7 @@
 
 package org.openflexo.technologyadapter.oslc.virtualmodel.action;
 
+import org.openflexo.foundation.fml.rt.error.FMLExecutionException;
 import java.lang.reflect.Type;
 import java.util.logging.Logger;
 
@@ -122,7 +123,7 @@ public interface AddOSLCRequirement
 		}
 
 		@Override
-		public OSLCRequirement execute(RunTimeEvaluationContext evaluationContext) {
+		public OSLCRequirement execute(RunTimeEvaluationContext evaluationContext) throws FMLExecutionException {
 
 			OSLCRequirement oslcRequirement = null;
 
