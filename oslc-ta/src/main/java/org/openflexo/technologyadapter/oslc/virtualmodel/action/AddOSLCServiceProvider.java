@@ -41,6 +41,7 @@ package org.openflexo.technologyadapter.oslc.virtualmodel.action;
 import java.lang.reflect.Type;
 import java.util.logging.Logger;
 
+import org.openflexo.foundation.fml.rt.error.FMLExecutionException;
 import org.openflexo.foundation.fml.annotations.FML;
 import org.openflexo.foundation.fml.rt.RunTimeEvaluationContext;
 import org.openflexo.pamela.annotations.ImplementationClass;
@@ -72,7 +73,7 @@ public interface AddOSLCServiceProvider extends OSLCCoreAction<OSLCServiceProvid
 		}
 
 		@Override
-		public OSLCServiceProvider execute(RunTimeEvaluationContext evaluationContext) {
+		public OSLCServiceProvider execute(RunTimeEvaluationContext evaluationContext) throws FMLExecutionException {
 
 			OSLCServiceProvider cdlActivity = null;
 

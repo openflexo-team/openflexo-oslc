@@ -42,6 +42,7 @@ import java.lang.reflect.Type;
 import java.util.logging.Logger;
 
 import org.eclipse.lyo.oslc4j.core.model.CreationFactory;
+import org.openflexo.foundation.fml.rt.error.FMLExecutionException;
 import org.openflexo.connie.DataBinding;
 import org.openflexo.foundation.fml.annotations.FML;
 import org.openflexo.foundation.fml.rt.RunTimeEvaluationContext;
@@ -90,7 +91,7 @@ public interface AddOSLCResource extends OSLCCoreAction<OSLCResource> {
 		}
 
 		@Override
-		public OSLCResource execute(RunTimeEvaluationContext evaluationContext) {
+		public OSLCResource execute(RunTimeEvaluationContext evaluationContext) throws FMLExecutionException {
 
 			OSLCResource resource = null;
 

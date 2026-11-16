@@ -38,6 +38,8 @@
 
 package org.openflexo.technologyadapter.oslc.virtualmodel.action;
 
+import org.openflexo.foundation.fml.rt.error.FMLNullReferenceError;
+import org.openflexo.foundation.fml.rt.error.FMLEvaluation;
 import org.openflexo.foundation.fml.rt.error.FMLExecutionException;
 import java.lang.reflect.Type;
 import java.util.logging.Logger;
@@ -45,8 +47,6 @@ import java.util.logging.Logger;
 import org.eclipse.lyo.client.oslc.OSLCConstants;
 import org.eclipse.lyo.oslc4j.core.model.CreationFactory;
 import org.openflexo.connie.DataBinding;
-import org.openflexo.connie.exception.NullReferenceException;
-import org.openflexo.connie.exception.TypeMismatchException;
 import org.openflexo.foundation.fml.annotations.FML;
 import org.openflexo.foundation.fml.editionaction.TechnologySpecificActionDefiningReceiver;
 import org.openflexo.foundation.fml.rt.RunTimeEvaluationContext;
@@ -128,27 +128,20 @@ public interface AddOSLCRequirement
 			OSLCRequirement oslcRequirement = null;
 
 			OSLCServiceProviderCatalog receiver = getReceiver(evaluationContext);
-
-			try {
-				OSLCResourceResource resource = (OSLCResourceResource) receiver.getResource();
-				CreationFactory creationFactory = null;
-				String title = getTitle().getBindingValue(evaluationContext);
-				String desc = getReqDescription().getBindingValue(evaluationContext);
-				if (getCreationFactory().getBindingValue(evaluationContext) != null) {
-					creationFactory = getCreationFactory().getBindingValue(evaluationContext);
-				}
-				else {
-					creationFactory = getDefaultRequirementCreationFactory(resource);
-				}
-				OSLCRMModelConverter converter = resource.getConverter().getConverter(OSLCRMModelConverter.class);
-				oslcRequirement = converter.createOSLCRequirement(title, desc, creationFactory);
-			} catch (TypeMismatchException e) {
-				e.printStackTrace();
-			} catch (NullReferenceException e) {
-				e.printStackTrace();
-			} catch (ReflectiveOperationException e) {
-				e.printStackTrace();
+			if (receiver == null) {
+				throw new FMLNullReferenceError("No OSLC service provider catalog to create the requirement in");
 			}
+
+			OSLCResourceResource resource = (OSLCResourceResource) receiver.getResource();
+			CreationFactory creationFactory = null;
+			String title = FMLEvaluation.evaluate(getTitle(), evaluationContext, this);
+			String desc = FMLEvaluation.evaluate(getReqDescription(), evaluationContext, this);
+			creationFactory = FMLEvaluation.evaluate(getCreationFactory(), evaluationContext, this);
+			if (creationFactory == null) {
+				creationFactory = getDefaultRequirementCreationFactory(resource);
+			}
+			OSLCRMModelConverter converter = resource.getConverter().getConverter(OSLCRMModelConverter.class);
+			oslcRequirement = converter.createOSLCRequirement(title, desc, creationFactory);
 
 			return oslcRequirement;
 		}
