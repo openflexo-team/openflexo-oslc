@@ -51,7 +51,7 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
-import org.openflexo.foundation.FlexoException;
+import org.openflexo.foundation.OpenflexoRuntimeException;
 import org.openflexo.foundation.resource.FileIODelegate.FileIODelegateImpl;
 import org.openflexo.foundation.resource.FileWritingLock;
 import org.openflexo.foundation.resource.FlexoResourceImpl;
@@ -80,7 +80,7 @@ public abstract class OSLCResourceResourceImpl extends FlexoResourceImpl<OSLCSer
 	}
 
 	@Override
-	public OSLCServiceProviderCatalog loadResourceData() throws ResourceLoadingCancelledException, FileNotFoundException, FlexoException {
+	public OSLCServiceProviderCatalog loadResourceData() throws ResourceLoadingCancelledException, FileNotFoundException, OpenflexoRuntimeException {
 		// Unused AbstractResource unit = null;
 
 		if (getIODelegate().exists()) {
@@ -116,7 +116,7 @@ public abstract class OSLCResourceResourceImpl extends FlexoResourceImpl<OSLCSer
 		} catch (ResourceLoadingCancelledException e) {
 			e.printStackTrace();
 			throw new SaveResourceException(getIODelegate());
-		} catch (FlexoException e) {
+		} catch (OpenflexoRuntimeException e) {
 			e.printStackTrace();
 			throw new SaveResourceException(getIODelegate());
 		}

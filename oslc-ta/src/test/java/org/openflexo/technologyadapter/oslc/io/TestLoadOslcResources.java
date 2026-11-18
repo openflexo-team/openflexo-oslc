@@ -30,7 +30,7 @@ public class TestLoadOslcResources extends OpenflexoTestCase {
 					e.printStackTrace();
 				} catch (ResourceLoadingCancelledException e) {
 					e.printStackTrace();
-				} catch (FlexoException e) {
+				} catch (OpenflexoRuntimeException e) {
 					e.printStackTrace();
 				}
 				assertNotNull(resource.getLoadedResourceData());
