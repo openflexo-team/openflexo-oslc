@@ -2,6 +2,8 @@
 
 ## OSLC-D-1 — `oslc-ta` is stuck on Apache HttpClient 4  ·  `TODO`
 
+**GitHub:** [openflexo-team/openflexo-oslc#1](https://github.com/openflexo-team/openflexo-oslc/issues/1)
+
 **Symptom.** `oslc-ta` cannot leave HttpClient 4.5.14 (BUILD-F-2 in `openflexo-buildplugin/BACKLOG.md`).
 
 **Verified (2026-10-25).**
